@@ -6,16 +6,18 @@ AWD - Travel Agency is a mini project developed to practice the Microservice Arc
 
 - Microservice Architecture
 - Docker
+- Spring Boot
+- Spring Data JPA
 - Spring Cloud
-- Discovery Server : Eureka Server
 - Spring Security
+- Discovery Server : Eureka Server
 - Api Gateway + Filters : Zuul
 
 ## Microservices List
 
--[x] Hotel
--[] Flight
--[] Excursion
+- [x] Hotel
+- [] Flight
+- [] Excursion
 
 ## Built With
 
