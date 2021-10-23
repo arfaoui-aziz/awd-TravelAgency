@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  discovery:
+    build:  ../DiscoveryServer
+    ports:
+      - "8761:8761"
+    image: "discovery-server"
+  candidate_B:
+    build:  ../Candidate
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+      - spring.cloud.config.uri=http://config:8888
+    ports:
+      - "3000:8080"
+    image: "candidate-service"
+  candidate_C:
+    build:  ../Candidate
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+      - spring.cloud.config.uri=http://config:8888
+    ports:
+      - "3001:8080"
+    image: "candidate-service"
+  config:
+    build: ../config-server
+    command: --spring.profiles.active=native --spring.cloud.config.server.native.searchLocations=/config
+    volumes:
+      - type: bind
+        source: ./src/main/resources/centralRepo
+        target: /config
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+      - spring.profiles.active=native
+    ports:
+      - "8888:8888"
+    image: "config-server"
+  gateway:
+    build: ../gateway-server
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+    ports:
+      - "8762:8762"
+    image: "gateway-server"
