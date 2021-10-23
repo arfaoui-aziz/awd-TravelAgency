@@ -16,7 +16,7 @@ AWD - Travel Agency is a mini project developed to practice the Microservice Arc
 ## Microservices List
 
 - [x] Hotel
-- [] Flight
+- [x] Flight
 - [] Excursion
 
 ## Built With
