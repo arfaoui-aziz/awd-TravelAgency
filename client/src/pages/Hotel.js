@@ -8,7 +8,6 @@ import {
   Card,
   Table,
   Stack,
-  Avatar,
   Button,
   Checkbox,
   TableRow,
@@ -197,8 +196,7 @@ export default function Hotel() {
                         phoneNumber,
                         roomsLeft,
                         price,
-                        rating,
-                        image
+                        rating
                       } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
