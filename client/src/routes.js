@@ -14,6 +14,8 @@ import Hotel from './pages/Hotel';
 import AddHotel from './pages/AddHotel';
 import Flight from './pages/Flight';
 import AddFlight from './pages/AddFlight';
+import Excursion from './pages/Excursion';
+import AddExcursion from './pages/AddExcursion';
 
 // ----------------------------------------------------------------------
 
@@ -30,9 +32,10 @@ export default function Router() {
         { path: 'blog', element: <Blog /> },
         { path: 'hotels', element: <Hotel /> },
         { path: 'flights', element: <Flight /> },
-        { path: 'excursions', element: <Hotel /> },
+        { path: 'excursions', element: <Excursion /> },
         { path: 'addhotel', element: <AddHotel /> },
-        { path: 'addflight', element: <AddFlight /> }
+        { path: 'addflight', element: <AddFlight /> },
+        { path: 'addexcursion', element: <AddExcursion /> }
       ]
     },
     {

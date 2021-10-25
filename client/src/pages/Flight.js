@@ -228,7 +228,7 @@ export default function Flight() {
                           <TableCell align="left">{flightDate}</TableCell>
                           <TableCell align="left">{flightDuration}</TableCell>
                           <TableCell align="left">{airlineCompany}</TableCell>
-                          <TableCell align="left">{price}</TableCell>
+                          <TableCell align="left">{`${price} DT`}</TableCell>
                           <TableCell align="left">{placesLeft}</TableCell>
 
                           <TableCell align="right">

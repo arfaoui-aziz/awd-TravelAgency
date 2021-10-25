@@ -26,18 +26,17 @@ import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
 import { fShortenNumber } from '../utils/formatNumber';
 //
-// import HOTELLIST from '../_mocks_/hotel';
+// import EXCURSIONLIST from '../_mocks_/hotel';
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Hotel Name', alignRight: false },
-  { id: 'email', label: 'Email', alignRight: false },
-  { id: 'address', label: 'Address', alignRight: false },
-  { id: 'phoneNumber', label: 'Phone Number', alignRight: false },
-  { id: 'roomsLeft', label: 'Rooms Left', alignRight: false },
+  { id: 'title', label: 'Excursion', alignRight: false },
+  { id: 'destination', label: 'Destination', alignRight: false },
+  { id: 'duration', label: 'Date', alignRight: false },
   { id: 'price', label: 'Price', alignRight: false },
-  { id: 'rating', label: 'Rating', alignRight: false },
+  { id: 'placesLeft', label: 'Places Left', alignRight: false },
+  { id: 'description', label: 'Description', alignRight: false },
   { id: '' }
 ];
 
@@ -72,21 +71,21 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function Hotel() {
+export default function Excursion() {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState('name');
   const [filterName, setFilterName] = useState('');
-  const [HOTELLIST, setHOTELLIST] = useState([]);
+  const [EXCURSIONLIST, setEXCURSIONLIST] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const fetchAllProfiles = async () => {
-    const [res, error] = await queryApi(process.env.REACT_APP_HOTEL_SERVICE_API);
+    const [res, error] = await queryApi(process.env.REACT_APP_EXCURSION_SERVICE_API);
     if (error) {
       console.log(error, 'errrroor');
     } else {
-      setHOTELLIST(res);
+      setEXCURSIONLIST(res);
     }
   };
 
@@ -102,7 +101,7 @@ export default function Hotel() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = HOTELLIST.map((n) => n.name);
+      const newSelecteds = EXCURSIONLIST.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -140,27 +139,31 @@ export default function Hotel() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - HOTELLIST.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - EXCURSIONLIST.length) : 0;
 
-  const filteredHotels = applySortFilter(HOTELLIST, getComparator(order, orderBy), filterName);
+  const filteredExcursions = applySortFilter(
+    EXCURSIONLIST,
+    getComparator(order, orderBy),
+    filterName
+  );
 
-  const isUserNotFound = filteredHotels.length === 0;
+  const isUserNotFound = filteredExcursions.length === 0;
 
   return (
     <Page title="AWD - Travel Agency">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Hotels
+            Excursions
           </Typography>
 
           <Button
             variant="contained"
             component={RouterLink}
-            to="/dashboard/addhotel"
+            to="/dashboard/addexcursion"
             startIcon={<Icon icon={plusFill} />}
           >
-            New Hotel
+            New Excursion
           </Button>
         </Stack>
 
@@ -178,28 +181,18 @@ export default function Hotel() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={HOTELLIST.length}
+                  rowCount={EXCURSIONLIST.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
-                  {filteredHotels
+                  {filteredExcursions
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => {
-                      const {
-                        id,
-                        name,
-                        email,
-                        address,
-                        city,
-                        zipCode,
-                        phoneNumber,
-                        roomsLeft,
-                        price,
-                        rating
-                      } = row;
-                      const isItemSelected = selected.indexOf(name) !== -1;
+                      const { id, title, destination, duration, placesLeft, price, description } =
+                        row;
+                      const isItemSelected = selected.indexOf(title) !== -1;
 
                       return (
                         <TableRow
@@ -213,34 +206,25 @@ export default function Hotel() {
                           <TableCell padding="checkbox">
                             <Checkbox
                               checked={isItemSelected}
-                              onChange={(event) => handleClick(event, name)}
+                              onChange={(event) => handleClick(event, title)}
                             />
                           </TableCell>
                           <TableCell component="th" scope="row" padding="none">
                             <Stack direction="row" alignItems="center" spacing={2}>
-                              {/* <img alt={name} src={image} style={{ height: 80, width: 80 }} /> */}
+                              {/* <img alt={excursionNumber} src={image} style={{ height: 80, width: 80 }} /> */}
                               <Typography variant="subtitle2" noWrap>
-                                {name}
+                                {title}
                               </Typography>
                             </Stack>
                           </TableCell>
-                          <TableCell align="left">{email}</TableCell>
-                          <TableCell align="left">{`${address} , ${city} , ${zipCode}`}</TableCell>
-                          <TableCell align="left">{phoneNumber}</TableCell>
-                          <TableCell align="left">
-                            {/* <Label
-                              variant="ghost"
-                              color={(status === 'banned' && 'error') || 'success'}
-                            >
-                              {sentenceCase(status)}
-                            </Label> */}
-                            {roomsLeft}
-                          </TableCell>
+                          <TableCell align="left">{destination}</TableCell>
+                          <TableCell align="left">{duration}</TableCell>
                           <TableCell align="left">{`${price} DT`}</TableCell>
-                          <TableCell align="left">{rating}</TableCell>
+                          <TableCell align="left">{placesLeft}</TableCell>
+                          <TableCell align="left">{description}</TableCell>
 
                           <TableCell align="right">
-                            <UserMoreMenu hotel hID={id} />
+                            <UserMoreMenu excursion hID={id} />
                           </TableCell>
                         </TableRow>
                       );
@@ -267,7 +251,7 @@ export default function Hotel() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={HOTELLIST.length}
+            count={EXCURSIONLIST.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

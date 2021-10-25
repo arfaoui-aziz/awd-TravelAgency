@@ -10,7 +10,7 @@ import { queryApi } from '../../../utils/queryApi';
 
 // ----------------------------------------------------------------------
 
-export default function UserMoreMenu({ hID, flight, hotel }) {
+export default function UserMoreMenu({ hID, flight, hotel, excursion }) {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -21,6 +21,8 @@ export default function UserMoreMenu({ hID, flight, hotel }) {
       ServiceApi = process.env.REACT_APP_HOTEL_SERVICE_API;
     } else if (flight) {
       ServiceApi = process.env.REACT_APP_FLIGHT_SERVICE_API;
+    } else if (excursion) {
+      ServiceApi = process.env.REACT_APP_EXCURSION_SERVICE_API;
     }
     const [res, error] = await queryApi(`${ServiceApi}/${hID}`, null, 'DELETE');
     console.log(e);
