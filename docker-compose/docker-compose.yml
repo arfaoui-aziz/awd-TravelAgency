@@ -26,6 +26,13 @@ services:
     ports:
       - "8085:8085"
     image: "flight-service"
+  excursion_A:
+    build:  ../Excursion
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+    ports:
+      - "8087:8087"
+    image: "excursion-service"
   gateway:
     build: ../gateway-server
     environment: 
