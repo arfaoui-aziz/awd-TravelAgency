@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
 import { Box, Container, Typography, TextField, Stack, Divider } from '@mui/material';
@@ -10,6 +10,7 @@ import { LoadingButton } from '@mui/lab';
 
 // import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Page from '../components/Page';
+import { queryApi } from '../utils/queryApi';
 
 const ContentStyle = styled('div')(({ theme }) => ({
   maxWidth: '90%',
@@ -21,7 +22,35 @@ const ContentStyle = styled('div')(({ theme }) => ({
 }));
 
 export default function AddHotel() {
-  const handleSubmit = () => {};
+  const navigate = useNavigate();
+  const [hotelData, setHotelData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
+    city: '',
+    zipCode: '',
+    imgUrl: '',
+    price: '',
+    roomsLeft: '',
+    rating: ''
+  });
+
+  const handleChange = (e) => {
+    const input = e.target;
+    setHotelData({ ...hotelData, [input.id]: input.value });
+    console.log(hotelData);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const [, error] = await queryApi('api/hotels', hotelData, 'POST');
+
+    if (error) {
+      console.log(error);
+    } else {
+      navigate('/dashboard/hotels');
+    }
+  };
 
   return (
     <Page title="AWD - Travel Agency | Add Hotel">
@@ -31,28 +60,37 @@ export default function AddHotel() {
       <Divider variant="middle" />
       <Container>
         <ContentStyle>
-          <Box component="form" onSubmit={handleSubmit}>
+          <Box component="form" onSubmit={handleSubmit} onChange={handleChange}>
             <Stack spacing={3}>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                <TextField fullWidth label="Hotel Name" />
+                <TextField id="name" fullWidth label="Hotel Name" />
 
-                <TextField fullWidth autoComplete="username" type="email" label="Email address" />
+                <TextField
+                  id="email"
+                  fullWidth
+                  autoComplete="username"
+                  type="email"
+                  label="Email address"
+                />
               </Stack>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                <TextField fullWidth label="Phone Number" />
-                <TextField fullWidth label="Hotel Address" />
+                <TextField id="phoneNumber" fullWidth label="Phone Number" />
+                <TextField id="address" fullWidth label="Hotel Address" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                <TextField fullWidth label="City" />
-                <TextField fullWidth label="Zip Code" />
+                <TextField id="city" fullWidth label="City" />
+                <TextField id="zipCode" fullWidth label="Zip Code" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
-                <TextField fullWidth label="Image Url" />
+                <TextField id="price" fullWidth label="Price" />
+                <TextField id="roomsLeft" fullWidth label="Available Rooms" />
+              </Stack>
 
-                <TextField fullWidth label="Price" />
-                <TextField fullWidth label="Available Rooms" />
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+                <TextField id="imgUrl" fullWidth label="Image Url" />
+                <TextField id="rating" fullWidth label="Available Rooms" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} />
@@ -66,16 +104,6 @@ export default function AddHotel() {
                   // loading={isSubmitting}
                 >
                   Add Hotel
-                </LoadingButton>
-
-                <LoadingButton
-                  // fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                  // loading={isSubmitting}
-                >
-                  Update Hotel
                 </LoadingButton>
               </Stack>
             </Stack>

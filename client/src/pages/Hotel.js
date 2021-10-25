@@ -160,7 +160,7 @@ export default function Hotel() {
             to="/dashboard/addhotel"
             startIcon={<Icon icon={plusFill} />}
           >
-            New User
+            New Hotel
           </Button>
         </Stack>
 
