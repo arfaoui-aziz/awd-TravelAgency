@@ -1,6 +1,6 @@
 import { filter } from 'lodash';
 import { Icon } from '@iconify/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import plusFill from '@iconify/icons-eva/plus-fill';
 import { Link as RouterLink } from 'react-router-dom';
 // material
@@ -20,12 +20,13 @@ import {
   TablePagination
 } from '@mui/material';
 // components
+import { queryApi } from '../utils/queryApi';
 import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
 //
-import HOTELLIST from '../_mocks_/hotel';
+// import HOTELLIST from '../_mocks_/hotel';
 
 // ----------------------------------------------------------------------
 
@@ -77,7 +78,21 @@ export default function Hotel() {
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState('name');
   const [filterName, setFilterName] = useState('');
+  const [HOTELLIST, setHOTELLIST] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const fetchAllProfiles = async () => {
+    const [res, error] = await queryApi('api/hotels');
+    if (error) {
+      console.log(error, 'errrroor');
+    } else {
+      setHOTELLIST(res);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllProfiles();
+  }, []);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
