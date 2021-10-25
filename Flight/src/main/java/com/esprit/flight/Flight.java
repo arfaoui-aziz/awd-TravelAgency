@@ -35,6 +35,17 @@ public class Flight implements Serializable{
 	private String flightNumber,flightFrom ,flightTo,airlineCompany,companyImgUrl, flightDuration,flightDate;
 	private int placesLeft;
 	private float price;
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getFlightNumber() {
 		return flightNumber;
 	}

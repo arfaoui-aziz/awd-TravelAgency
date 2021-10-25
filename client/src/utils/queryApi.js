@@ -13,7 +13,7 @@ export async function queryApi(endpoint, body = null, method = 'GET', transformB
     // Create our config, with the method as the method passed and the new endpoint
     let config = {
       method,
-      url: `${process.env.REACT_APP_API_URL}/${endpoint}`
+      url: `${process.env.REACT_APP_API_URL}${endpoint}`
     };
     if (body) {
       // If we have a body and the method is GET, the config is the following

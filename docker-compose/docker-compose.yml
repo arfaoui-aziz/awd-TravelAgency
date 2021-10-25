@@ -17,7 +17,7 @@ services:
     environment: 
       - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
     ports:
-      - "8081:8081"
+      - "8081:8080"
     image: "hotel-service"
   flight_A:
     build:  ../Flight

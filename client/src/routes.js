@@ -12,6 +12,8 @@ import User from './pages/User';
 import NotFound from './pages/Page404';
 import Hotel from './pages/Hotel';
 import AddHotel from './pages/AddHotel';
+import Flight from './pages/Flight';
+import AddFlight from './pages/AddFlight';
 
 // ----------------------------------------------------------------------
 
@@ -27,9 +29,10 @@ export default function Router() {
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> },
         { path: 'hotels', element: <Hotel /> },
-        { path: 'flights', element: <Hotel /> },
+        { path: 'flights', element: <Flight /> },
         { path: 'excursions', element: <Hotel /> },
-        { path: 'addhotel', element: <AddHotel /> }
+        { path: 'addhotel', element: <AddHotel /> },
+        { path: 'addflight', element: <AddFlight /> }
       ]
     },
     {

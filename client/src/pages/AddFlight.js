@@ -21,41 +21,40 @@ const ContentStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(8, 0)
 }));
 
-export default function AddHotel() {
+export default function AddFlight() {
   const navigate = useNavigate();
-  const [hotelData, setHotelData] = useState({
-    name: '',
-    email: '',
-    phoneNumber: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    imgUrl: '',
+  const [flightData, setFlightData] = useState({
+    flightNumber: '',
+    flightFrom: '',
+    flightTo: '',
+    airlineCompany: '',
+    companyImgUrl: '',
+    flightDuration: '',
+    flightDate: '',
     price: '',
-    roomsLeft: '',
-    rating: ''
+    placesLeft: ''
   });
 
   const handleChange = (e) => {
     const input = e.target;
-    setHotelData({ ...hotelData, [input.id]: input.value });
-    console.log(hotelData);
+    setFlightData({ ...flightData, [input.id]: input.value });
+    console.log(flightData);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const [, error] = await queryApi(process.env.REACT_APP_HOTEL_SERVICE_API, hotelData, 'POST');
+    const [, error] = await queryApi(process.env.REACT_APP_FLIGHT_SERVICE_API, flightData, 'POST');
 
     if (error) {
       console.log(error);
     } else {
-      navigate('/dashboard/hotels');
+      navigate('/dashboard/flights');
     }
   };
 
   return (
-    <Page title="AWD - Travel Agency | Add Hotel">
+    <Page title="AWD - Travel Agency | Add Flight">
       <Typography variant="h4" gutterBottom component="div" ml={2}>
-        Add Hotel
+        Add Flight
       </Typography>
       <Divider variant="middle" />
       <Container>
@@ -63,34 +62,27 @@ export default function AddHotel() {
           <Box component="form" onSubmit={handleSubmit} onChange={handleChange}>
             <Stack spacing={3}>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                <TextField id="name" fullWidth label="Hotel Name" />
+                <TextField id="flightNumber" fullWidth label="Flight Number" />
 
-                <TextField
-                  id="email"
-                  fullWidth
-                  autoComplete="username"
-                  type="email"
-                  label="Email address"
-                />
+                <TextField id="flightFrom" fullWidth label="Flight From" />
               </Stack>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                <TextField id="phoneNumber" fullWidth label="Phone Number" />
-                <TextField id="address" fullWidth label="Hotel Address" />
+                <TextField id="flightTo" fullWidth label="flightTo" />
+                <TextField id="airlineCompany" fullWidth label="Airline Company" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4}>
-                <TextField id="city" fullWidth label="City" />
-                <TextField id="zipCode" fullWidth label="Zip Code" />
+                <TextField id="companyImgUrl" fullWidth label="Image" />
+                <TextField id="flightDuration" fullWidth label="Flight Duration" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
                 <TextField id="price" fullWidth label="Price" />
-                <TextField id="roomsLeft" fullWidth label="Available Rooms" />
+                <TextField id="placesLeft" fullWidth label="Places Left" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
-                <TextField id="imgUrl" fullWidth label="Image Url" />
-                <TextField id="rating" fullWidth label="Rating" />
+                <TextField id="flightDate" fullWidth label="flightDate" />
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} />
@@ -103,7 +95,7 @@ export default function AddHotel() {
                   variant="contained"
                   // loading={isSubmitting}
                 >
-                  Add Hotel
+                  Add Flight
                 </LoadingButton>
               </Stack>
             </Stack>
