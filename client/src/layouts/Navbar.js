@@ -8,7 +8,7 @@ const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 export default function Navbar() {
   return (
     <div className="home__navbar">
-      <img src="/static/logo.svg" width={48} height={48} alt="Logo" className="LOGO" />
+      <img src="/static/logo.png" width={80} height={80} alt="Logo" className="LOGO" />
       <ul className="nav__list">
         <li className="nav__list__item">
           <Link to="/home">

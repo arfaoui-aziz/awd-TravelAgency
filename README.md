@@ -18,6 +18,7 @@ AWD - Travel Agency is a mini project developed in order to practice the Microse
 - [x] Hotel
 - [x] Flight
 - [x] Excursion
+- [x] Booking
 
 ## Built With
 
