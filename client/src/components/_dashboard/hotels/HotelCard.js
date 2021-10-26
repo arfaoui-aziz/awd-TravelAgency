@@ -7,11 +7,10 @@ import { styled } from '@mui/material/styles';
 import { fCurrency } from '../../../utils/formatNumber';
 //
 import Label from '../../Label';
-import ColorPreview from '../../ColorPreview';
 
 // ----------------------------------------------------------------------
 
-const ProductImgStyle = styled('img')({
+const HotelImgStyle = styled('img')({
   top: 0,
   width: '100%',
   height: '100%',
@@ -21,12 +20,12 @@ const ProductImgStyle = styled('img')({
 
 // ----------------------------------------------------------------------
 
-ShopProductCard.propTypes = {
-  product: PropTypes.object
+ShopHotelCard.propTypes = {
+  hotel: PropTypes.object
 };
 
-export default function ShopProductCard({ product }) {
-  const { name, cover, price, colors, status, priceSale } = product;
+export default function ShopHotelCard({ hotel }) {
+  const { name, cover, price, status, priceSale } = hotel;
 
   return (
     <Card>
@@ -46,7 +45,7 @@ export default function ShopProductCard({ product }) {
             {status}
           </Label>
         )}
-        <ProductImgStyle alt={name} src={cover} />
+        <HotelImgStyle alt={name} src={cover} />
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>

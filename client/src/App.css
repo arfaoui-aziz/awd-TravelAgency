@@ -37,14 +37,15 @@
 .hero {
   background-image: url(https://d1s8koojop3egi.cloudfront.net/photos/content/gallery/gallery7511/slide-voyage.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  position: top left;
+  inset: 0 0;
   width: 100%;
   min-height: 60vh;
 }
 
 .offre {
   margin: 40px 0;
-  text-align: center;
 }
 
 .offre__text {
@@ -63,4 +64,8 @@
 .offre__text:hover {
   transform: skewY(2deg) skewX(15deg) scale(1.1);
   text-shadow: 0.5rem 1rem 2rem rgb(0 0 0 / 20%);
+}
+
+.u-center-text {
+  text-align: center;
 }
