@@ -16,6 +16,7 @@ import Flight from './pages/Flight';
 import AddFlight from './pages/AddFlight';
 import Excursion from './pages/Excursion';
 import AddExcursion from './pages/AddExcursion';
+import Home from './pages/Home';
 
 // ----------------------------------------------------------------------
 
@@ -49,6 +50,7 @@ export default function Router() {
         { path: '*', element: <Navigate to="/404" /> }
       ]
     },
+    { path: 'home', element: <Home /> },
     { path: '*', element: <Navigate to="/404" replace /> }
   ]);
 }
