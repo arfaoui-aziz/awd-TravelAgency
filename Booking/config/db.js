@@ -2,12 +2,15 @@ const mongoose = require("mongoose");
 
 const connectToDB = async () => {
   try {
-    await mongoose.connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    });
+    await mongoose.connect(
+      "mongodb+srv://awd:awd@awd.eiafa.mongodb.net/awd?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+      }
+    );
 
     console.log("Connected successfully To DB");
   } catch (err) {
