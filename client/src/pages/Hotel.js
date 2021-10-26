@@ -24,7 +24,7 @@ import Page from '../components/Page';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
-import { fShortenNumber } from '../utils/formatNumber';
+
 //
 // import HOTELLIST from '../_mocks_/hotel';
 

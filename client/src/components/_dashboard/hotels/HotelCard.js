@@ -14,7 +14,7 @@ const HotelImgStyle = styled('img')({
   top: 0,
   width: '100%',
   height: '100%',
-  objectFit: 'cover',
+  objectFit: 'imgUrl',
   position: 'absolute'
 });
 
@@ -25,7 +25,14 @@ ShopHotelCard.propTypes = {
 };
 
 export default function ShopHotelCard({ hotel }) {
-  const { name, cover, price, status, priceSale } = hotel;
+  const {
+    name,
+    imgUrl,
+    price,
+    status = 'sale',
+    rating,
+    priceSale = price + price * Math.random()
+  } = hotel;
 
   return (
     <Card>
@@ -45,17 +52,17 @@ export default function ShopHotelCard({ hotel }) {
             {status}
           </Label>
         )}
-        <HotelImgStyle alt={name} src={cover} />
+        <HotelImgStyle alt={name} src={imgUrl} />
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Link to="#" color="inherit" underline="hover" overflow="hidden" component={RouterLink}>
-            <Typography variant="subtitle2" noWrap>
+            <Typography variant="subtitle1" noWrap>
               {name}
             </Typography>
           </Link>
-          <Rating name="read-only" value={4} readOnly size="small" />
+          <Rating name="read-only" value={rating} readOnly size="small" />
         </Stack>
         <Typography variant="caption">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam reiciendis
