@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // material
 import { Grid } from '@mui/material';
-import ShopHotelCard from './HotelCard';
+import HotelCard from './HotelCard';
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ export default function HotelList({ hotels, ...other }) {
     <Grid container spacing={3} {...other}>
       {hotels.map((hotel) => (
         <Grid key={hotel.id} item xs={12} sm={6} md={4}>
-          <ShopHotelCard hotel={hotel} />
+          <HotelCard hotel={hotel} />
         </Grid>
       ))}
     </Grid>

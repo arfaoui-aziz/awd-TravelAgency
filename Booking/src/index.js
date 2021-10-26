@@ -4,11 +4,6 @@ const connectToDB = require("../config/db");
 require("./eureka-helper");
 const app = express();
 
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 const bookingRouter = require("./bookingRouter");
 
 const port = process.env.PORT || 3007;
