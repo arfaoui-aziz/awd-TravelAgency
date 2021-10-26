@@ -15,4 +15,6 @@ public interface FlightRepository  extends JpaRepository<Flight, Integer>{
 	@Query("select f from Flight f where f.flightNumber like :flightNumber")
 	public Page<Flight> flightByFlightNumber(@Param("flightNumber") String n, Pageable pageable);
 	
+	@Query("select f from Flight f where f.id like :id")
+	public Page<Flight> flightById(@Param("id") int n, Pageable pageable);
 }

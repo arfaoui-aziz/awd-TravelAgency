@@ -5,6 +5,8 @@ const bookingSchema = new mongoose.Schema({
   type: String,
   serviceID: String,
   bookingDate: String,
+  fromDate: String,
+  toDate: String,
   price: String,
 });
 

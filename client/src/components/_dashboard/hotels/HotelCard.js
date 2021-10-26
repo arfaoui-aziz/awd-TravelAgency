@@ -46,14 +46,21 @@ export default function HotelCard({ hotel }) {
     priceSale = price + price * Math.random()
   } = hotel;
 
-  const closeDialog = async (val, dateFrom, dateTo) => {
-    if (dateFrom && dateTo) {
+  const closeDialog = async (val, fromDate, toDate) => {
+    if (fromDate && toDate) {
       const [, error] = await queryApi(
         process.env.REACT_APP_BOOKING_SERVICE_API,
-        { userID: '1', type: 'hotel', serviceID: id, bookingDate: new Date(), price },
+        {
+          userID: '1',
+          type: 'hotel',
+          serviceID: id,
+          bookingDate: new Date(),
+          price,
+          fromDate,
+          toDate
+        },
         'POST'
       );
-      console.log(dateTo);
     }
     setOpen(val);
   };

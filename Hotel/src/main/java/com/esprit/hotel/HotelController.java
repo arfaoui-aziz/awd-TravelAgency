@@ -35,4 +35,6 @@ public class HotelController {
 	public ResponseEntity<String> deleteHotel(@PathVariable(value="id") int id){
 		return new ResponseEntity<>(hotelService.deleteHotel(id),HttpStatus.OK);
 	}
+	
+
 }

@@ -12,4 +12,7 @@ public interface ExcursionRepository extends JpaRepository<Excursion, Integer> {
 
 	@Query("select e from Excursion e where e.destination like :destination")
 	public Page<Excursion> excursionByDestination(@Param("destination") String n, Pageable pageable);
+	
+	@Query("select e from Excursion e where e.id like :id")
+	public Page<Excursion> excursionById(@Param("id") int n, Pageable pageable);
 }
