@@ -18,6 +18,7 @@ import Excursion from './pages/Excursion';
 import AddExcursion from './pages/AddExcursion';
 import Home from './pages/Home';
 import Bookings from './pages/Bookings';
+import UpdateHotel from './pages/UpdateHotel';
 
 // ----------------------------------------------------------------------
 
@@ -36,6 +37,7 @@ export default function Router() {
         { path: 'flights', element: <Flight /> },
         { path: 'excursions', element: <Excursion /> },
         { path: 'addhotel', element: <AddHotel /> },
+        { path: 'updatehotel', element: <UpdateHotel /> },
         { path: 'addflight', element: <AddFlight /> },
         { path: 'addexcursion', element: <AddExcursion /> }
       ]

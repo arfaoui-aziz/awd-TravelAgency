@@ -2,6 +2,10 @@
 
 AWD - Travel Agency is a mini project developed in order to practice the Microservice Architecture
 
+## Architecture
+
+![Architecture!](/assets/Architecture.png)
+
 ## Topics covered
 
 - Microservice Architecture

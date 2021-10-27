@@ -10,6 +10,8 @@ import com.netflix.zuul.exception.ZuulException;
 @Component
 public class PreFilter extends ZuulFilter {
 
+	
+	
 	@Override
 	public boolean shouldFilter() {
 		
@@ -23,7 +25,7 @@ public class PreFilter extends ZuulFilter {
 		HttpServletRequest request = ctx.getRequest();
 
 		System.out.println(
-				"Using Pre filter    Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
+				"Requête interceptée Using Pre filter    Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
 
 		return null;
 	}

@@ -31,6 +31,11 @@ HotelCard.propTypes = {
 
 export default function HotelCard({ hotel }) {
   const [open, setOpen] = useState(false);
+  const [toogle, setToogle] = useState(false);
+
+  const handleToogle = () => {
+    setToogle(!toogle);
+  };
 
   const openDialog = () => {
     setOpen(true);
