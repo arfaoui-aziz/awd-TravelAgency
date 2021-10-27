@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { HotelList } from './_dashboard/hotels';
 import { queryApi } from '../utils/queryApi';
+import Cart from './Cart';
 
 export default function Offre() {
   const [Hotels, setHotels] = useState([]);
@@ -24,6 +26,9 @@ export default function Offre() {
         <h1 className="offre__text">Decouvrir Nos Promos</h1>
       </div>
       <HotelList hotels={Hotels} />
+      <Link to="/booking/me">
+        <Cart />
+      </Link>
     </div>
   );
 }

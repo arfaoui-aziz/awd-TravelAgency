@@ -11,8 +11,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Stack from '@mui/material/Stack';
 
 export default function BookingDialog({ open, dialogHandler }) {
-  const [value, setValue] = useState(new Date('2014-08-18T21:11:54'));
-  const [value2, setValue2] = useState(new Date('2014-08-18T21:11:54'));
+  const [value, setValue] = useState(new Date('2021-10-27T21:11:54'));
+  const [value2, setValue2] = useState(new Date('2021-10-27T21:11:54'));
 
   const handleChange = (newValue) => {
     setValue(newValue);

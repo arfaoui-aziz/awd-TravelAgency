@@ -1,10 +1,9 @@
+import React from 'react';
 import { Icon } from '@iconify/react';
 import shoppingCartFill from '@iconify/icons-eva/shopping-cart-fill';
 // material
 import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
-
-// ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
   zIndex: 999,
@@ -27,9 +26,7 @@ const RootStyle = styled('div')(({ theme }) => ({
   '&:hover': { opacity: 0.72 }
 }));
 
-// ----------------------------------------------------------------------
-
-export default function CartWidget() {
+export default function Cart() {
   return (
     <RootStyle>
       <Badge showZero badgeContent={1} color="error" max={99}>

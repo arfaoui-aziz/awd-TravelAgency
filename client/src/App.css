@@ -69,3 +69,10 @@
 .u-center-text {
   text-align: center;
 }
+
+.BookingCard {
+  margin: 20px 0;
+}
+.BookingImg {
+  width: 40%;
+}

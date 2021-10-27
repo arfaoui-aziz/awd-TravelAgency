@@ -5,7 +5,6 @@ const router = new express.Router();
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
-const { find } = require("./booking");
 
 router.use("/api-docs", swaggerUi.serve);
 router.get("/api-docs", swaggerUi.setup(swaggerDocument));
@@ -34,9 +33,7 @@ router.get("/booking/me/:id", async (req, res) => {
       bookInfo = [...bookInfo, MyBookingsInfo];
     }
 
-    res.send(bookInfo);
-
-    console.log("boiz");
+    res.send({ bookInfo, MyBookings });
   } catch (e) {
     res.send(e);
     console.log(e);
