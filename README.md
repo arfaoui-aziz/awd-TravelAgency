@@ -33,14 +33,23 @@ AWD - Travel Agency is a mini project developed in order to practice the Microse
 - [H2 Database](https://www.h2database.com)
 - [MongoDB](https://www.mongodb.com/)
 
+
+
+
 ### Hotel API Documentation
+
+<br>
 
 ![HotelApi!](/assets/HotelApi.png)
 
 ### Flight API Documentation
 
+<br>
+
 ![FlightApi!](/assets/FlightApi.png)
 
 ### Excursion API Documentation
+
+<br>
 
 ![ExcursionApi!](/assets/ExcursionApi.png)
